@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam</title>
-   
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>exam</title>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
+    
 </head>
 <body>
-     <h1>Examen THYP du 5 décembre 2022</h1>
+    <h1>Examen THYP du 5 décembre 2022</h1>
     <h3>CHERIK Farah</h3>
+
+    <div id="main">
+
+    </div>
+    <script>
+        d3.json("items.json").then(function(data)
+        {
+            console.log(data);
+            d3.select("#main").selectAll('div').data(data).enter().append('div')
+            .attr('id',(d,i)=>'id-'+i)
+            .html((d,i)=>'Element : '+i+'  '+d["dcterms:title"][0]["@value"]);
+        });
+    </script>
     
 </body>
 </html>
